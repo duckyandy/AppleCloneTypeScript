@@ -3,9 +3,12 @@ import Link from "next/link";
 import {
   MagnifyingGlassIcon,
   ShoppingBagIcon,
+  UserIcon,
 } from "@heroicons/react/24/outline";
 
 function Header() {
+  const session = false;
+
   return (
     <header
       className="sticky top-0 z-30 flex w-full items-center
@@ -38,12 +41,14 @@ function Header() {
         <MagnifyingGlassIcon className="headerIcon" />
         <Link href="/checkout">
           <div className="relative cursor-pointer">
-            <span className="absolute -right-1 -top-1 z-50 flex h-4 w-4 items-center justify-center rounded-full bg-gradient-to-r from-pink-500 to-violet-500">
+            <span className="absolute -right-1 -top-1 z-50 flex h-4 w-4 items-center justify-center rounded-full bg-gradient-to-r from-pink-500 to-violet-500  text-[10px] text-white">
               5
             </span>
             <ShoppingBagIcon className="headerIcon" />
           </div>
         </Link>
+
+        {session ? <h1>User</h1> : <UserIcon className="headerIcon" />}
       </div>
     </header>
   );
