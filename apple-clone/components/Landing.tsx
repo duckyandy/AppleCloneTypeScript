@@ -24,7 +24,7 @@ function Landing() {
       >
         <Image
           alt="phone_image"
-          src="/iphone5.webp"
+          src="/iphone1.png"
           width={450}
           height={450}
           objectFit="contain"
