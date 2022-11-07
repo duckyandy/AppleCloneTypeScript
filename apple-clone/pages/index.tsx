@@ -4,8 +4,13 @@ import Head from "next/head";
 import Image from "next/image";
 import Header from "../components/Header";
 import Landing from "../components/Landing";
+import { fetchCategories } from "../utils/fetchCategories";
 
-const Home: NextPage = () => {
+interface Props {
+  categories: Category[];
+}
+const Home = ({ categories }: Props) => {
+  console.log(categories);
   return (
     <div>
       <Head>
@@ -23,7 +28,7 @@ const Home: NextPage = () => {
           </h1>
           <Tab.Group>
             <Tab.List className="flex justify-center">
-              {/* {categories.map((category) => (
+              {categories.map((category) => (
                 <Tab
                   key={category._id}
                   id={category._id}
@@ -37,14 +42,14 @@ const Home: NextPage = () => {
                 >
                   {category.title}
                 </Tab>
-              ))} */}
+              ))}
             </Tab.List>
-            <Tab.Panels className="mx-auto max-w-fit pt-10 pb-24 sm:px-4">
-              {/* <Tab.Panel className="tabPanel">{showProducts(0)}</Tab.Panel>
+            {/* <Tab.Panels className="mx-auto max-w-fit pt-10 pb-24 sm:px-4">
+              <Tab.Panel className="tabPanel">{showProducts(0)}</Tab.Panel>
               <Tab.Panel className="tabPanel">{showProducts(1)}</Tab.Panel>
               <Tab.Panel className="tabPanel">{showProducts(2)}</Tab.Panel>
-              <Tab.Panel className="tabPanel">{showProducts(3)}</Tab.Panel> */}
-            </Tab.Panels>
+              <Tab.Panel className="tabPanel">{showProducts(3)}</Tab.Panel>
+            </Tab.Panels> */}
           </Tab.Group>
         </div>
       </section>
@@ -55,8 +60,11 @@ const Home: NextPage = () => {
 export default Home;
 
 //server side rendering
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps<Props> = async () => {
+  const categories = await fetchCategories();
   return {
-    props: {},
+    props: {
+      categories,
+    },
   };
 };
