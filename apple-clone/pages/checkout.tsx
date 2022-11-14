@@ -8,6 +8,7 @@ import CheckoutProduct from "../components/CheckoutProduct";
 import Header from "../components/Header";
 import { selectBasketItems, selectBasketTotal } from "../redux/basketSlice";
 import Currency from "react-currency-formatter";
+import { ChevronDownIcon } from "@heroicons/react/24/outline";
 
 function checkout() {
   const items = useSelector(selectBasketItems);
@@ -50,14 +51,71 @@ function checkout() {
             {Object.entries(groupedItemsInBasket).map(([key, items]) => (
               <CheckoutProduct key={key} id={key} items={items} />
             ))}
-            <div>
-              <div>
-                <div>
-                  <div>
+            <div className="my-12 mt-4 ml-auto max-w-3xl">
+              <div className="divide-y divide-gray-300">
+                <div className="pb-4">
+                  <div className="flex justify-between">
                     <p>Subtotal:</p>
                     <p>
                       <Currency quantity={basketTotal} currency="HKD" />
                     </p>
+                  </div>
+                  <div className="jusitfy-between flex">
+                    <p>Shipping</p>
+                    <p>Free</p>
+                  </div>
+                  <div className="flex justify-between">
+                    <div className="flex flex-col gap-x-1 lg:flex-row">
+                      Estimated tax for: {""}
+                      <p className="flex cursor-pointer items-end text-blue-500 hover:underline">
+                        Enter zip code
+                        <ChevronDownIcon className="h-6 w-6" />
+                      </p>
+                    </div>
+                    <p>$ - </p>
+                  </div>
+                </div>
+
+                <div className="flex justify-between pt-4 text-xl font-semibold">
+                  <h4>Total</h4>
+                  <h4>
+                    <Currency quantity={basketTotal} currency="HKD" />
+                  </h4>
+                </div>
+              </div>
+
+              <div className="my-14 space-y-4">
+                <h4 className="text-xl font-semibold">
+                  How would you like to check out?
+                </h4>
+                <div className="flex flex-col gap-4 md:flex-row">
+                  <div className="order-2 flex flex-1 flex-col items-center rounded-xl bg-gray-200 p-8 py-12 text-center">
+                    <h4 className="wb-4 flex flex-col text-xl font-semibold">
+                      <span>Pay monthly</span>
+                      <span>with Apple Card</span>
+                      <span>
+                        $290/month at 0% APR<sup>◊</sup>
+                      </span>
+                    </h4>
+                    <Button title="Check Out with Apple Card Monthly Installments" />
+                    <p className="mt-2 max-w-[240px] text-[13px]">
+                      $0.00 due today, which includes applicable full-price
+                      items, down payments, shipping, and taxes!
+                    </p>
+                  </div>
+
+                  <div
+                    className="flex flex-1 flex-col items-center space-y-8 rounded-xl bg-gray-300
+                  p-8 py-12 text-center md:order-2"
+                  >
+                    <h4 className="mb-4 flex flex-col text-xl font-semibold">
+                      Pay in full
+                      <span>
+                        <Currency quantity={basketTotal} currency="HKD" />
+                      </span>
+                    </h4>
+
+                    <Button title="Check Out" width="w-full" />
                   </div>
                 </div>
               </div>
