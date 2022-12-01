@@ -1,6 +1,8 @@
 # AppleCloneTypeScript
 Apple Clone with TS, TailwindCSS, React, NextJS. The images are from personal Sanity server. So, provided screenshot. 
 
+Uses Redux for state management of shopping cart item list.
+
 Responsive and mobile first!
 
 <img width="1512" alt="Screen Shot 2022-12-01 at 5 54 54 PM" src="https://user-images.githubusercontent.com/77257146/205009672-aada9482-214d-4e88-9ed1-7bbfe515e32c.png">
