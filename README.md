@@ -1,6 +1,8 @@
 # AppleCloneTypeScript
 Apple Clone with TS, TailwindCSS, React, NextJS. The images are from personal Sanity server. So, provided screenshot. 
 
+Implemented only the front-end portion without the payment procedure and login.
+
 Uses Redux for state management of shopping cart item list.
 
 Responsive and mobile first!
